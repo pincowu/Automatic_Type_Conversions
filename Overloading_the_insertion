@@ -1,0 +1,40 @@
+//Zhicheng Wang
+#include <iostream>
+using namespace std;
+
+// Define the Point class
+class Point {
+private:
+    int x;    // X coordinate
+    int y;    // Y coordinate
+
+public:
+    // Constructor with default parameters
+    Point(int a = 0, int b = 0) : x(a), y(b) {}
+
+    // Friend function declaration:
+    // Overload << operator and allow access to private members
+    friend ostream& operator<<(ostream& os, const Point& p);
+};
+
+// Define how the << operator works
+ostream& operator<<(ostream& os, const Point& p) {
+    // Custom output format
+    os << "(" << p.x << ", " << p.y << ")";
+    // Return the same output stream to allow chained output (cout << a << b)
+    return os;
+}
+
+// Main function
+int main() {
+    Point a(3, 4), b(7, 9);
+
+    // Use the overloaded << operator
+    cout << "Point a = " << a << endl;
+    cout << "Point b = " << b << endl;
+
+    //  Supports chained output
+    cout << "a and b: " << a << " , " << b << endl;
+
+    return 0;
+}
